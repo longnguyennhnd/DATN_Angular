@@ -1,0 +1,20 @@
+<div id="content" class="app-content">
+  <div class="card"  style="margin-top: 50px">
+    <div class="card-body">
+  <form class="form-horizontal" [formGroup]="formdata" (ngSubmit)="onSubmit()">
+    <div class="md-form">
+      <div>
+      <i style="margin-bottom: 10px; margin-right: 10px; float: left" class="fas fa-pencil-alt prefix"></i><p>Phụ huynh có góp ý về nhà trường để cải thiện chất lượng giảng dạy xin hãy bình
+        luận vào bên dưới(chỉ phụ huynh và người quản trị có thể biết)</p>
+      </div>
+      <div style=" margin: 30px 0;">
+        <textarea formControlName="gopy" class="form-control z-depth-1"  id="exampleFormControlTextarea6" rows="10"
+          placeholder="Hãy viết gì đó..."></textarea>
+        <button style="margin-top: 20px; margin-left: 90%;" type="submit" class="btn btn-success">Hoàn
+          Thành</button>
+      </div>
+    </div>
+  </form>
+  </div>
+  </div>
+</div>

@@ -1,0 +1,79 @@
+<div id="content" class="app-content">
+  <div class="card"  style="margin-top: 50px">
+    <div class="card-body">
+       <div class="row justify-content-center">
+          <ul class="breadcrumb">
+             <li class="breadcrumb-item"><a href="#">Quản lý</a></li>
+             <li class="breadcrumb-item active">Điểm danh</li>
+          </ul>
+          <hr class="mb-4" />
+        </div>
+          <form *ngIf="check" role="form" [formGroup]="formds"  (ngSubmit)="LayDS()">
+            <div class="row">
+                <div class="col-md-4">
+                <label class="col-md-4 col-form-label">Chọn lớp</label>
+                <div class="col-md-6">
+                    <select formControlName="MaLop" class="form-control">
+                    <option *ngFor="let lh of lophocs" value="{{lh.maLopHoc}}">{{lh.tenlophoc}}</option>
+                    </select>
+                </div>
+                </div>
+                <div class="col-md-4">
+                <label class="col-md-4 col-form-label">Buổi học</label>
+                <div class="col-md-6">
+                    <select formControlName="Buoi" class="form-control">
+                    <option value="Sang">Sáng</option>
+                    <option value="Chieu">Chiều</option>
+                    </select>
+                </div>
+                </div>
+            
+                <div class="col-md-2">
+                <button (click)="LayDS()" class="btn btn-info">Gửi</button>
+                </div>
+          </div>
+          </form>
+
+          <form *ngIf="isCreate" [formGroup]="formdata" role="form" (ngSubmit)="onSubmit(formdata.value)" class="form-horizontal">
+            <div class="table-responsive">
+              <div formArrayName="DSHS" >
+                <table class="table table-bordered  table-hover">
+                    <thead class="text-center">
+                        <tr>
+                            <th>TT</th>
+                            <th>Mã học sinh</th>
+                            <th>Tên học sinh</th>
+                            <th>Giới tính</th>
+                            <th>Trạng thái</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-center">
+                      <ng-container *ngFor="let item of formdata.get('DSHS').controls; let i = index;">
+                          <tr [formGroupName]="i"> 
+                            <td>{{i+1}}</td>
+                            <td><input type="text" style="background: none;" class="form-control" size="6" formControlName="MaHS" readonly ></td>
+                            <td class="text-left"><input type="text" style="background: none;"class="form-control" formControlName="TenHS" readonly></td>
+                            <td><input type="text" class="form-control"style="background: none;" size="3" formControlName="GioiTinh" readonly></td>
+                            <td class="text-center">
+                              <div class="form-group row">
+                                <div class="col-sm-4">
+                                  <input type="radio" formControlName="TrangThai" value="0"/>&nbsp;&nbsp;Có
+                                </div>
+                                <div class="col-sm-6">
+                                  <input  type="radio" formControlName="TrangThai" value="1" />&nbsp;&nbsp;Không
+                                </div>
+                              </div> 
+                            </td>
+                          </tr>
+                        </ng-container>
+                    </tbody>
+                </table>
+              </div>
+            </div>
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-info">Gửi</button>
+                </div>
+          </form>
+    </div>
+    </div>
+</div>

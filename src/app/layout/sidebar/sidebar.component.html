@@ -1,0 +1,140 @@
+<aside class="sidebar">
+   <div class="scrollbar-inner">
+      <div class="user">
+         <div class="user__info" data-toggle="dropdown">
+            <img class="user__img" src="../../../assets/backend/demo/img/contacts/15.jpg" alt="">
+            <div>
+               <div class="user__name">
+                  {{info.hoTen}}
+               </div>
+               <div class="user__email">
+               
+               </div>
+            </div>
+         </div>
+
+         <div class="dropdown-menu">
+            <a class="dropdown-item" href="">Hồ sơ</a>
+            <a class="dropdown-item" href="">Cài đặt</a>
+            <a class="dropdown-item" (click)="logout()">Đăng xuất</a>
+         </div>
+      </div>
+      <ul class="navigation">
+         <ng-container *ngIf="role=='Admin'|| role=='User'">
+            <li class="navigation__active"><a [routerLink]="['/']"><i class="zmdi zmdi-home"></i>
+                  Home</a></li>
+            <li>
+         </ng-container>
+         <ng-container *ngIf="role=='Admin'">
+
+            <li><a [routerLink]="['/hocsinh']"><i class="zmdi zmdi-male-female zmdi-hc-fw"></i>
+                  Học Sinh</a></li>
+            <li>
+
+         </ng-container>
+         <ng-container *ngIf="role=='Admin'">
+            <li><a [routerLink]="['/giaovien']"><i class="zmdi zmdi-account zmdi-hc-fw"></i>
+                  Giáo Viên</a></li>
+            <li>
+            <li><a [routerLink]="['/monhoc']"><i class="zmdi zmdi-book zmdi-hc-fw"></i>
+                  Môn Học</a></li>
+            <li>
+            <li><a [routerLink]="['/lophoc']"><i class="zmdi zmdi-graduation-cap zmdi-hc-fw"></i>
+                  Lớp Học</a></li>
+            <li>
+         </ng-container>
+         <ng-container *ngIf="role=='User'">
+            <li><a [routerLink]="['/diemdanh']"><i class="zmdi zmdi-badge-check zmdi-hc-fw"></i>
+                  Điểm Danh</a></li>
+            <li>
+               <!-- <div class="menu-item">
+            <a [routerLink]="['/diem']"  class="menu-link">
+            <span class="menu-icon"><i class="fa fa-qrcode"></i></span>
+            <span class="menu-text">Điểm</span>
+            </a>
+         </div> -->
+         </ng-container>
+         <ng-container *ngIf="role=='Admin'">
+            <li><a [routerLink]="['/thongbao']"><i class="zmdi zmdi-notifications-active zmdi-hc-fw"></i>
+                  Thông báo</a></li>
+            <li>
+            <li><a [routerLink]="['/user/user']"><i class="zmdi zmdi-accounts zmdi-hc-fw"></i>
+                  Tài khoản</a></li>
+            <li>
+
+            <li><a [routerLink]="['/nghiphep']"><i class="zmdi zmdi-receipt zmdi-hc-fw"></i>
+                  Xem đơn nghỉ phép</a></li>
+            <li>
+               <!-- <div class="menu-item">
+            <a [routerLink]="['/dsdiemdanh']"  class="menu-link">
+            <span class="menu-icon"><i class="fa fa-book"></i></span>
+            <span class="menu-text">DSHS chưa điểm danh</span>
+            </a>
+         </div> -->
+            <li><a [routerLink]="['/dsdiemdanh']"><i class="zmdi zmdi-thumb-up-down zmdi-hc-fw"></i>
+                  Xem các góp ý</a></li>
+            <li>
+
+               <!-- <div class="menu-item has-sub expand">
+            <a href="#" class="menu-link">
+            <span class="menu-icon"><i class="fa fa-tasks"></i></span>
+            <span class="menu-text">Thống kê</span>
+            <span class="menu-caret"><b class="caret"></b></span>
+            </a>
+            <div class="menu-submenu" >
+               <div class="menu-item">
+                  <a [routerLink]="['/thongke/top10diem']"  class="menu-link">
+                     <span class="menu-text">Top điểm</span>
+                  </a>
+               </div>
+               <div class="menu-item">
+                  <a [routerLink]="['/thongke/diemtb']"  class="menu-link">
+                     <span class="menu-text">Điểm trung bình</span>
+                  </a>
+               </div>
+               <div class="menu-item">
+                  <a [routerLink]="['/thongke/diemtbkyhoc']"  class="menu-link">
+                     <span class="menu-text">Tỉ lệ học sinh</span>
+                  </a>
+               </div>
+            </div>
+         </div> -->
+         </ng-container>
+         <ng-container *ngIf="role=='Student'">
+            <li><a [routerLink]="['/xemdiem']"><i class="zmdi zmdi-library zmdi-hc-fw"></i>
+                  Xin Nghỉ</a></li>
+            <li>
+            <li><a [routerLink]="['/xemdiemhk']"><i class="zmdi zmdi-spellcheck zmdi-hc-fw"></i>
+                  Góp Ý</a></li>
+            <li>
+            <!-- <li><a [routerLink]="['/xemlichhoc']"><i class="zmdi zmdi-home"></i>
+                  Xem Lịch Học</a></li>
+            <li> -->
+         </ng-container>
+      </ul>
+   </div>
+</aside>
+
+
+
+<!-- <aside class="sidebar">
+   <div class="scrollbar-inner">
+      <ul class="navigation">
+         <li class="navigation__active"><a href="{{URL::to('/dashboard')}}"><i class="zmdi zmdi-home"></i>
+               Home</a></li>
+         <li>
+            <a href="{{url('/QLLoaiSP')}}"><i class="zmdi zmdi-view-list zmdi-hc-fw"></i> Quản lý loại sản phẩm</a>
+         </li>
+
+         <li><a href="{{url('/Product')}}"><i class="zmdi zmdi-apps zmdi-hc-fw"></i> Quản lý sản phẩm</a></li>
+         <li><a href="{{url('/Order')}}"><i class="zmdi zmdi-local-atm zmdi-hc-fw"></i> Quản lý hoá đơn</a></li>
+         <li><a href="{{url('/Account')}}"><i class="zmdi zmdi-accounts-list zmdi-hc-fw"></i> Quản lý tài khoản</a>
+         </li>
+         <li><a href="{{url('/Blog')}}"><i class="zmdi zmdi-collection-text zmdi-hc-fw"></i>Quản lý bài viết</a>
+         </li>
+         <li><a href="{{url('/thongke')}}"><i class="zmdi zmdi-trending-up zmdi-hc-fw"></i>Thống kê báo cáo</a>
+         </li>
+
+      </ul>
+   </div>
+</aside> -->

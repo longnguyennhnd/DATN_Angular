@@ -1,0 +1,48 @@
+<div id="content" class="app-content">
+  <div class="card"  style="margin-top: 50px">
+    <div class="card-body">
+     <div class="row justify-content-center">
+        <ul class="breadcrumb">
+           <li class="breadcrumb-item"><a href="#">Quản lý</a></li>
+           <li class="breadcrumb-item active">Góp ý</li>
+        </ul>
+        <hr class="mb-4" />
+        <!-- <div class="col-md-12"> 
+          <form class="form-horizontal" role="form" [formGroup]="formsearch"  (ngSubmit)="search()">
+            <div class="row form-group">
+              <div class="col-sm-6">
+                  <input formControlName="hoten" class="form-control"  type="text" placeholder="Họ tên" style="width: 100%;" />
+              </div>
+              <div class="col-sm-3">
+                  <button (click)="search()" class="btn btn-sm btn-primary">Tìm kiếm</button>
+              </div>
+            </div>
+          </form>
+        </div> -->
+        <table class="table table-striped table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">STT</th>
+                  <th scope="col">Phụ huynh</th>
+                  <th scope="col">Phụ huynh em</th>
+                  <th scope="col">Góp ý</th>
+              </tr>
+            </thead>
+            <tbody >
+              <ng-container *ngFor="let item of infos, let i = index">
+              <tr>
+                <td>{{ i+1 }}</td>
+                <td>{{ item.phuhuynh }}</td>
+                <td>{{ item.hoten }}</td>
+                <td>{{ item.gopy }}</td>
+                
+              </tr>
+              </ng-container>
+            </tbody>
+        </table>
+     </div>
+  </div>
+  </div>
+  <div class="row form-group">
+</div>
+</div>
