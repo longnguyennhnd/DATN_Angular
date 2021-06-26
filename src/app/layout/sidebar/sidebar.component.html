@@ -8,7 +8,7 @@
                   {{info.hoTen}}
                </div>
                <div class="user__email">
-               
+
                </div>
             </div>
          </div>
@@ -28,7 +28,7 @@
          <ng-container *ngIf="role=='Admin'">
 
             <li><a [routerLink]="['/hocsinh']"><i class="zmdi zmdi-male-female zmdi-hc-fw"></i>
-                  Học Sinh</a></li>
+                  Trẻ</a></li>
             <li>
 
          </ng-container>
@@ -61,6 +61,9 @@
             <li><a [routerLink]="['/user/user']"><i class="zmdi zmdi-accounts zmdi-hc-fw"></i>
                   Tài khoản</a></li>
             <li>
+            <li><a [routerLink]="['/dsdiemdanhngay']"><i class="zmdi zmdi-badge-check zmdi-hc-fw"></i>
+                  Xem danh sách điểm danh</a></li>
+            <li>
 
             <li><a [routerLink]="['/nghiphep']"><i class="zmdi zmdi-receipt zmdi-hc-fw"></i>
                   Xem đơn nghỉ phép</a></li>
@@ -74,6 +77,7 @@
             <li><a [routerLink]="['/dsdiemdanh']"><i class="zmdi zmdi-thumb-up-down zmdi-hc-fw"></i>
                   Xem các góp ý</a></li>
             <li>
+
 
                <!-- <div class="menu-item has-sub expand">
             <a href="#" class="menu-link">
@@ -107,7 +111,7 @@
             <li><a [routerLink]="['/xemdiemhk']"><i class="zmdi zmdi-spellcheck zmdi-hc-fw"></i>
                   Góp Ý</a></li>
             <li>
-            <!-- <li><a [routerLink]="['/xemlichhoc']"><i class="zmdi zmdi-home"></i>
+               <!-- <li><a [routerLink]="['/xemlichhoc']"><i class="zmdi zmdi-home"></i>
                   Xem Lịch Học</a></li>
             <li> -->
          </ng-container>

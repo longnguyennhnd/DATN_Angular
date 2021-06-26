@@ -29,6 +29,8 @@ import { XemlichhocComponent } from './xemlichhoc/xemlichhoc.component';
 import { NghiphepComponent } from './nghiphep/nghiphep.component';
 import { DsdiemdanhComponent } from './dsdiemdanh/dsdiemdanh.component';
 import { ThongbaoComponent } from './thongbao/thongbao.component';
+import { DsdiemdanhngayComponent } from './dsdiemdanhngay/dsdiemdanhngay.component';
+
 
 
 export const mainRoutes: Routes = [
@@ -89,6 +91,12 @@ export const mainRoutes: Routes = [
         {
           path: 'thongbao',
           component: ThongbaoComponent,
+          canActivate: [RoleGuard],
+          data: { roles: [Role.Admin] },
+        },
+        {
+          path: 'dsdiemdanhngay',
+          component: DsdiemdanhngayComponent,
           canActivate: [RoleGuard],
           data: { roles: [Role.Admin] },
         },
@@ -171,7 +179,8 @@ export const mainRoutes: Routes = [
     XemlichhocComponent,
     DsdiemdanhComponent,
     NghiphepComponent,
-    ThongbaoComponent
+    ThongbaoComponent,
+    DsdiemdanhngayComponent
   ],
   imports: [
     SharedModule,

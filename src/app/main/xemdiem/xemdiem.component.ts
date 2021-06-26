@@ -10,6 +10,7 @@ import 'rxjs/add/operator/takeUntil';
 import { DatePipe } from '@angular/common';
 import { AuthenticationService } from '../../lib/authentication.service';
 import jsPDF from 'jspdf';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 // import 'jspdf-autotable';
 import html2canvas from 'html2canvas';
 declare var $: any;
@@ -59,7 +60,7 @@ export class XemdiemComponent extends BaseComponent implements OnInit {
     console.log(tmp);
     
     this._api.post('/api/NghiPhep/create-nghi-phep',tmp).takeUntil(this.unsubscribe).subscribe(res => {
-      alert('Xin nghỉ thành công');
+      Swal.fire('Xin nghỉ cho bé thành công','', 'success');
       });
   }
   
