@@ -33,9 +33,7 @@ export class XemdiemhkComponent extends BaseComponent implements OnInit {
   ngOnInit(): void {
     this._api.get('/api/hocsinh/get-by-id/' + this.authenticationService.userValue.username).takeUntil(this.unsubscribe).subscribe(res => {
       this.info = res;
-      console.log(this.info);
     });
-    console.log(this.authenticationService.userValue);
     this.formdata = this.fb.group({
       gopy: ['', Validators.required]
     });
@@ -48,7 +46,6 @@ export class XemdiemhkComponent extends BaseComponent implements OnInit {
       hoten: this.info.tenHS,
       gopy: this.formdata.value.gopy,
     };
-    console.log(tmp);
     this._api.post('/api/GopY/create-gop-y', tmp).takeUntil(this.unsubscribe).subscribe(res => {
       Swal.fire('Góp ý thành công', '', 'success');
     });

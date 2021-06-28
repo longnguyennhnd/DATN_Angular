@@ -56,7 +56,6 @@ export class DiemdanhComponent extends BaseComponent implements OnInit {
   get f() { return this.formdata.controls; }
 
   onSubmit(form: any): void{
-    console.log(form);
     let date= new Date();
     let ngay =this.datePipe.transform(date,"yyyy-MM-dd");
     let tmp = {
@@ -75,7 +74,6 @@ export class DiemdanhComponent extends BaseComponent implements OnInit {
               MaHS:val.MaHS,
               TrangThai:val.TrangThai
             };
-            console.log(cttmp);
             this._api.post('/api/ctdiemdanh/create-ctdiem-danh',cttmp).takeUntil(this.unsubscribe).subscribe(res => {});
           });
           Swal.fire('Thêm thành công','', 'success');

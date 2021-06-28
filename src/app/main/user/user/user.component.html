@@ -32,7 +32,11 @@
                   <td>{{ item.hoTen }}</td>
                   <td>{{ item.username }}</td>
                   <td>{{ item.password }}</td>
-                  <td style="text-align: center;">{{ item.level }}</td>
+                  <td style="text-align: center;">
+                    <p *ngIf="item.level == 'User' ">Giáo Viên</p>
+                    <p *ngIf="item.level == 'Admin' ">Người quản trị</p>
+                    <p *ngIf="item.level == 'Student' ">Phụ Huynh</p>
+                  </td>
                   <td class="action-col text-center" >
                     <div class="btn-group">
                       <button title="" class="btn btn-xs btn-white btn-default"  (click)="openUpdateModal(item)">  
@@ -82,7 +86,7 @@
             </div>
             <div class="col-md-6 mb-3">
              <label >Mật khẩu</label>
-             <input type="text" class="form-control"  formControlName="matkhau" required="">
+             <input type="password" class="form-control"  formControlName="matkhau" required="">
              <div *ngIf="submitted && f.matkhau.errors" class="invalid-feedback">
                <div *ngIf="f.matkhau.errors.required">Mật khẩu là bắt buộc</div>
                <div *ngIf="f.matkhau.errors.matkhau">Độ dài mật khẩu tối thiệu phải là 6 ký tự và phải chứa ký tự đặc biệt @#!$%&*</div>
@@ -90,7 +94,7 @@
           </div>
           <div class="col-md-6 mb-3">
              <label >Nhập lại mật khẩu</label>
-             <input type="text" class="form-control"  formControlName="nhaplaimatkhau" required="">
+             <input type="password" class="form-control"  formControlName="nhaplaimatkhau" required="">
              <div *ngIf="submitted && f.nhaplaimatkhau.errors" class="invalid-feedback">
                <div *ngIf="f.nhaplaimatkhau.errors.required">Xác nhận lại mật khẩu là bắt buộc</div>
                <div *ngIf="f.nhaplaimatkhau.errors.mustMatch">Xác thực lại mật khẩu không đúng</div>
@@ -99,9 +103,11 @@
             <div class="col-md-6 mb-3">
                <label>Chọn quyền</label>
                <select class="custom-select" formControlName="role">
-                <ng-container *ngFor="let r of roles">
-                <option value="{{r.value}}">{{r.value}}</option>
-                </ng-container>
+                <!-- <ng-container *ngFor="let r of roles"> -->
+                <option value="Admin">Admin</option>
+                <option value="User">Giáo Viên</option>
+                <option value="Student">Phụ Huynh</option>
+                <!-- </ng-container> -->
               </select>
                <div *ngIf="submitted && f.role.errors" class="invalid-feedback">
                  <div *ngIf="f.role.errors.required">Loại quyền là bắt buộc</div>

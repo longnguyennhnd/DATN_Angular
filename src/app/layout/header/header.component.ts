@@ -17,12 +17,13 @@ export class HeaderComponent extends BaseComponent implements OnInit {
 
   public infos: any;
   public noti: any;
+
   ngOnInit(): void {
     this._api.get('/api/GopY/get-all-thong-bao').takeUntil(this.unsubscribe).subscribe(res => {
       this.infos = res;
-      console.log(this.infos);
       });
   }
+  
   logout() {
     this.authenticationService.logout();
   }  
@@ -32,8 +33,6 @@ export class HeaderComponent extends BaseComponent implements OnInit {
       $('#createModal').modal('toggle');
       this._api.get('/api/GopY/get-by-id/'+ id).takeUntil(this.unsubscribe).subscribe((res:any) => {
         this.noti = res;
-        console.log(this.noti);
-        
         }); 
     }, 100);
   }

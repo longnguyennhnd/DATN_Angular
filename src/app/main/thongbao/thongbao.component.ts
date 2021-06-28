@@ -29,6 +29,8 @@ export class ThongbaoComponent extends BaseComponent implements OnInit {
   public isCreate: any;
   public infos: any;
   public noti: any;
+  public ti: any;
+  public bo: any;
   submitted = false;
   @ViewChild(FileUpload, { static: false }) file_image: FileUpload;
   constructor(private fb: FormBuilder, injector: Injector) {
@@ -51,7 +53,6 @@ export class ThongbaoComponent extends BaseComponent implements OnInit {
     //   });
     this._api.get('/api/GopY/get-all-thong-bao').takeUntil(this.unsubscribe).subscribe(res => {
       this.infos = res;
-      console.log(this.infos);
     });
   }
 
@@ -78,13 +79,20 @@ export class ThongbaoComponent extends BaseComponent implements OnInit {
     if (this.isCreate) {
       let tmp = {
 
-        noti_title: value.noti_content,
+        noti_title: value.noti_title,
         noti_content: value.noti_content,
       };
+
       this._api.post('/api/GopY/create-thong-bao', tmp).takeUntil(this.unsubscribe).subscribe(res => {
         Swal.fire('Thêm thông báo thành công', '', 'success');
         this.loadPage();
         this.closeModal();
+        this._api.post('/api/GopY/send-mail', tmp).takeUntil(this.unsubscribe).subscribe(res => {
+          Swal.fire('Gửi mail cho phụ huynh thành công', '', 'success');
+          this.loadPage();
+          this.closeModal();
+          
+        });
       });
     } else {
       let tmp = {

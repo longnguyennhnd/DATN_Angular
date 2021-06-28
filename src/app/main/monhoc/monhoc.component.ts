@@ -66,7 +66,6 @@ export class MonhocComponent extends BaseComponent implements OnInit {
     if (this.formdata.invalid) {
       return;
     } 
-    console.log(this.isCreate);
     if(this.isCreate) { 
         let tmp = {
            MaMonHoc:value.MaMonHoc,

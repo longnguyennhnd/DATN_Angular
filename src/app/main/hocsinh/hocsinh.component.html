@@ -34,6 +34,7 @@
                     <th scope="col">Giới tính</th>
                     <th scope="col">Ngày sinh</th>
                     <th scope="col">Nơi sinh</th>
+                    <th scope="col">Email</th>
                     <th scope="col">Dân tộc</th>
                     <th scope="col">Họ tên cha</th>
                     <th scope="col">Họ tên mẹ</th>
@@ -49,6 +50,7 @@
                   <td>{{ item.gioiTinh }}</td>
                   <td>{{ item.ngaySinh | date: 'dd/MM/yyyy' }}</td>
                   <td>{{ item.noisinh }}</td>
+                  <td>{{ item.email }}</td>
                   <td>{{ item.dantoc }}</td>
                   <td>{{ item.hotencha }}</td>
                   <td>{{ item.hotenme }}</td>
@@ -56,10 +58,10 @@
                   <td class="action-col" >
                     <div class="btn-group">
                       <button title="" class="btn btn-xs btn-white btn-default"  (click)="openUpdateModal(item)">  
-                        <i class="ace-icon fa fa-edit"></i>
+                        <i class="zmdi zmdi-edit zmdi-hc-fw" style="font-size: 20px"></i>
                       </button>
                       <button title="" class="btn btn-xs btn-white btn-default" (click)="onDelete(item)">
-                        <i class="ace-icon fa fa-trash"></i>
+                        <i class="zmdi zmdi-delete zmdi-hc-fw" style="font-size: 20px"></i>
                       </button>
                     </div>  
                   </td>
@@ -90,7 +92,7 @@
                  <label>Mã học sinh</label>
                  <input type="text" class="form-control"  formControlName="MaHS" >
                  <div *ngIf="submitted && f.MaHS.errors" class="d-flex valid-feedback" style="margin-left: 20px;color: red">
-                    <div *ngIf="f.MaHS.errors.required">Mã học sinh là bắt buộc</div>
+                    <div *ngIf="f.MaHS.errors.required">Mã trẻ là bắt buộc</div>
                  </div>
               </div>
               <div class="col-md-6 mb-4">

@@ -78,37 +78,44 @@
        <form *ngIf="doneSetupForm" [formGroup]="formdata"  (ngSubmit)="onSubmit(formdata.value)" class="form-horizontal utehy-form">
          <div class="modal-body no-padding">
           <div class="row mb-n3">
-            <div class="col-md-6 mb-3">
+            <div class="col-md-6 mb-4">
                <label>Họ Tên</label>
                <input type="text" class="form-control"  formControlName="TenGV" required="">
-               <div *ngIf="submitted && f.TenGV.errors" class="d-flex invalid-feedback">
+               <div *ngIf="submitted && f.TenGV.errors" class="d-flex invalid-feedback" style="margin-left: 15px;">
                  <div *ngIf="f.TenGV.errors.required">Họ tên là bắt buộc</div>
                </div>
             </div>
-            <div class="col-md-6 mb-3">
+            <div class="col-md-6 mb-4">
                <label >Môn học</label>
                <select formControlName="MaMonHoc" class="form-control">
                 <option *ngFor="let mh of monhocs" value="{{mh.maMonHoc}}">{{mh.tenMonHoc}}</option>
                 </select>
             </div>
-            <div class="col-md-6 mb-3">
+            <div class="col-md-6 mb-4">
              <label >Địa chỉ</label>
              <input type="text" class="form-control"  formControlName="DiaChi" required="">
-             <div *ngIf="submitted && f.DiaChi.errors" class="d-flex invalid-feedback">
+             <div *ngIf="submitted && f.DiaChi.errors" class="d-flex invalid-feedback" style="margin-left: 15px;">
                <div *ngIf="f.DiaChi.errors.required">Địa chỉ là bắt buộc</div>
               </div>
           </div>
-          <div class="col-md-6 mb-3">
+          <div class="col-md-6 mb-4">
+            <label >Email</label>
+            <input type="text" class="form-control"  formControlName="SDT" required="">
+            <div *ngIf="submitted && f.SDT.errors" class="d-flex invalid-feedback" style="margin-left: 15px;">
+              <div *ngIf="f.SDT.errors.required">Email là bắt buộc</div>
+            </div>
+         </div>
+          <div class="col-md-6 mb-4">
              <label >SDT</label>
              <input type="text" class="form-control"  formControlName="SDT" required="">
-             <div *ngIf="submitted && f.SDT.errors" class="d-flex invalid-feedback">
+             <div *ngIf="submitted && f.SDT.errors" class="d-flex invalid-feedback" style="margin-left: 15px;">
                <div *ngIf="f.SDT.errors.required">SĐT là bắt buộc</div>
              </div>
           </div>
-          <div class="col-md-6 mb-3">
+          <div class="col-md-6 mb-4">
             <label >Mật khẩu</label>
             <input type="text" class="form-control"  formControlName="PassWord" required="">
-            <div *ngIf="submitted && f.PassWord.errors" class="d-flex invalid-feedback">
+            <div *ngIf="submitted && f.PassWord.errors" class="d-flex invalid-feedback" style="margin-left: 15px;">
               <div *ngIf="f.PassWord.errors.required">Mật khẩu là bắt buộc</div>
             </div>
          </div>

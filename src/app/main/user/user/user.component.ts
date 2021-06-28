@@ -53,7 +53,6 @@ export class UserComponent extends BaseComponent implements OnInit {
     this.pageSize = 5;
     this._api.post('/api/users/search', { page: this.page, pageSize: this.pageSize, hoten: this.formsearch.get('hoten').value, taikhoan: this.formsearch.get('taikhoan').value }).takeUntil(this.unsubscribe).subscribe(res => {
       this.users = res.data;
-      console.log(this.users);
       this.totalRecords = res.totalItems;
       this.pageSize = res.pageSize;
     });
@@ -74,8 +73,7 @@ export class UserComponent extends BaseComponent implements OnInit {
     if (this.formdata.invalid) {
       return;
     }
-    console.log("click ok!");
-    console.log(this.isCreate);
+
     if (this.isCreate) {
       let tmp = {
         HoTen: value.hoten,
@@ -83,7 +81,6 @@ export class UserComponent extends BaseComponent implements OnInit {
         password: value.matkhau,
         level: value.role,
       };
-      console.log("okok");
       this._api.post('/api/users/create-user', tmp).takeUntil(this.unsubscribe).subscribe(res => {
         Swal.fire('Thêm thông báo thành công', '', 'success');
         this.search();
@@ -176,7 +173,6 @@ export class UserComponent extends BaseComponent implements OnInit {
       $('#createUserModal').modal('toggle');
       this._api.get('/api/users/get-by-id/' + row.id).takeUntil(this.unsubscribe).subscribe((res: any) => {
         this.user = res;
-        console.log(this.user);
         this.formdata = this.fb.group({
           'hoten': [this.user.hoTen, Validators.required],
           'taikhoan': [this.user.username, Validators.required],

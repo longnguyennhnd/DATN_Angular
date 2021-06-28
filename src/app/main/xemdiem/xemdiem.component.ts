@@ -38,10 +38,8 @@ export class XemdiemComponent extends BaseComponent implements OnInit {
   ngOnInit(): void {
     
     this.user=this.authenticationService.userValue;
-    console.log(this.user.username);
     this._api.get('/api/hocsinh/get-by-id/'+this.authenticationService.userValue.username).takeUntil(this.unsubscribe).subscribe(res => {
       this.info = res;
-      console.log(this.info);
       });
       this.formdata = new FormGroup({
         LyDo: new FormControl('', [Validators.required]),
@@ -57,7 +55,6 @@ export class XemdiemComponent extends BaseComponent implements OnInit {
       TenHS: this.info.tenHS,
       HoTenCha: this.info.hotencha,
     }
-    console.log(tmp);
     
     this._api.post('/api/NghiPhep/create-nghi-phep',tmp).takeUntil(this.unsubscribe).subscribe(res => {
       Swal.fire('Xin nghỉ cho bé thành công','', 'success');

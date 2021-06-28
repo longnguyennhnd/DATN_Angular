@@ -1,72 +1,70 @@
 <div id="content" class="app-content">
-    <div class="card"  style="margin-top: 50px">
-      <div class="card-body">
-         <div class="row justify-content-center">
-            <ul class="breadcrumb">
-               <li class="breadcrumb-item"><a href="#">Quản lý</a></li>
-               <li class="breadcrumb-item active">Điểm danh</li>
-            </ul>
-            <hr class="mb-4" />
+  <div class="card" style="margin-top: 50px">
+    <div class="card-body">
+      <div class="row justify-content-center">
+        <ul class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#">Quản lý</a></li>
+          <li class="breadcrumb-item active">Điểm danh</li>
+        </ul>
+        <hr class="mb-4" />
+      </div>
+      <form *ngIf="check" role="form" [formGroup]="formds" (ngSubmit)="LayDS()">
+        <div class="row">
+          <div class="col-md-4">
+            <label class="col-md-4 col-form-label">Chọn lớp</label>
+            <div class="col-md-6">
+              <select formControlName="MaLop" class="form-control">
+                <option *ngFor="let lh of lophocs" value="{{lh.maLopHoc}}">{{lh.tenlophoc}}</option>
+              </select>
+            </div>
           </div>
-            <form *ngIf="check" role="form" [formGroup]="formds"  (ngSubmit)="LayDS()">
-              <div class="row">
-                  <div class="col-md-4">
-                  <label class="col-md-4 col-form-label">Chọn lớp</label>
-                  <div class="col-md-6">
-                      <select formControlName="MaLop" class="form-control">
-                      <option *ngFor="let lh of lophocs" value="{{lh.maLopHoc}}">{{lh.tenlophoc}}</option>
-                      </select>
-                  </div>
-                  </div>
-                  <div class="col-md-4">
-                  <label class="col-md-4 col-form-label">Ngày nghỉ</label>
-                  <div class="col-md-6">
-                    <input formControlName="date" type="date" class="form-control">
-                  </div>
-                  </div>
-              
-                  <div class="col-md-2">
-                  <button (click)="LayDS()" class="btn btn-info">Gửi</button>
-                  </div>
+          <div class="col-md-4">
+            <label class="col-md-4 col-form-label">Ngày nghỉ</label>
+            <div class="col-md-6">
+              <input formControlName="date" type="date" class="form-control">
             </div>
-            </form>
+          </div>
+          <div class="col-md-2">
+            <button (click)="LayDS()" class="btn btn-info">Gửi</button>
+          </div>
+        </div>
+      </form>
 
-            <div *ngIf="isCreate">
-                <h5 style="margin: 35px 0;">Lớp <b>{{Tenlophoc}}</b> có: <b>{{countHS}}</b> học sinh nghỉ học</h5>
+      <div *ngIf="isCreate">
+        <h5 style="margin: 35px 0;">Lớp <b>{{Tenlophoc}}</b> có: <b>{{countHS}}</b> học sinh nghỉ học</h5>
 
-                <table class="table table-striped table-bordered" >
-                    <thead>
-                      <tr>
-                        <th scope="col">STT</th>
-                          <th scope="col">Tên Học Sinh</th>
-                          <th scope="col">Tên Lớp</th>
-                          <th scope="col">Phụ Huynh</th>
-                          <th scope="col">Ngày Sinh</th>
-                          <th scope="col">Ngày Điểm Danh</th>
-                          <th scope="col">Trạng Thái</th>
-    
-                      </tr>
-                    </thead>
-                    <tbody >
-                      <ng-container *ngFor="let item of hocsinhs, let i = index">
-                      <tr>
-                        <td>{{ i+1 }}</td>
-                        <td>{{ item.tenHS }}</td>
-                        <td>{{ item.tenlophoc }}</td>
-                        <td>{{ item.hotencha }}</td>
-                        <td>{{ item.ngaySinh | date: 'dd/MM/yyyy' }}</td>
-                        <td>{{ item.ngayDD | date: 'dd/MM/yyyy' }}</td>
-                        <td>
-                            <p *ngIf="item.trangThai==1">Vắng</p>
-                        </td>
-                      </tr>
-                      </ng-container>
-                    </tbody>
-                </table>
-            </div>
+        <table class="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">STT</th>
+              <th scope="col">Tên Học Sinh</th>
+              <th scope="col">Tên Lớp</th>
+              <th scope="col">Phụ Huynh</th>
+              <th scope="col">Ngày Sinh</th>
+              <th scope="col">Ngày Điểm Danh</th>
+              <th scope="col">Trạng Thái</th>
 
-            
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let item of hocsinhs, let i = index">
+              <tr>
+                <td>{{ i+1 }}</td>
+                <td>{{ item.tenHS }}</td>
+                <td>{{ item.tenlophoc }}</td>
+                <td>{{ item.hotencha }}</td>
+                <td>{{ item.ngaySinh | date: 'dd/MM/yyyy' }}</td>
+                <td>{{ item.ngayDD | date: 'dd/MM/yyyy' }}</td>
+                <td>
+                  <p *ngIf="item.trangThai==1">Vắng</p>
+                </td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
       </div>
-      </div>
+
+
+    </div>
   </div>
-  
+</div>

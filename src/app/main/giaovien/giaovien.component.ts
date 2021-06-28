@@ -38,7 +38,6 @@ export class GiaovienComponent extends BaseComponent implements OnInit {
     });
     this._api.get('/api/monhoc/get-all').takeUntil(this.unsubscribe).subscribe(res => {
       this.monhocs= res;
-      console.log(this.monhocs);
       });
    this.search();
   }
@@ -56,7 +55,6 @@ export class GiaovienComponent extends BaseComponent implements OnInit {
     this.pageSize = 5;
     this._api.post('/api/giaovien/search',{page: this.page, pageSize: this.pageSize, hoten: this.formsearch.get('hoten').value}).takeUntil(this.unsubscribe).subscribe(res => {
       this.giaoviens = res.data;
-      console.log(this.giaoviens);
       this.totalRecords =  res.totalItems;
       this.pageSize = res.pageSize;
       });
@@ -70,8 +68,7 @@ export class GiaovienComponent extends BaseComponent implements OnInit {
     this.submitted = true;
     if (this.formdata.invalid) {
       return;
-    } 
-    console.log(this.isCreate);
+    }
     if(this.isCreate) { 
         let tmp = {
            MaMonHoc:value.MaMonHoc,

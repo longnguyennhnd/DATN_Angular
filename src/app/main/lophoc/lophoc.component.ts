@@ -52,7 +52,6 @@ export class LophocComponent extends BaseComponent implements OnInit {
     this.pageSize = 5;
     this._api.post('/api/lophoc/search',{page: this.page, pageSize: this.pageSize, tenlop: this.formsearch.get('tenlop').value}).takeUntil(this.unsubscribe).subscribe(res => {
       this.lophocs = res.data;
-      console.log(this.lophocs);
       this.totalRecords =  res.totalItems;
       this.pageSize = res.pageSize;
       });
@@ -66,8 +65,7 @@ export class LophocComponent extends BaseComponent implements OnInit {
     this.submitted = true;
     if (this.formdata.invalid) {
       return;
-    } 
-    console.log(this.isCreate);
+    }
     if(this.isCreate) { 
         let tmp = {
           malophoc: value.tenlop ,
@@ -94,8 +92,7 @@ export class LophocComponent extends BaseComponent implements OnInit {
    
   } 
 
-  onDelete(row) { 
-    console.log(row.maLopHoc);
+  onDelete(row) {
     this._api.post('/api/lophoc/delete-lop-hoc',{id:row.maLopHoc}).takeUntil(this.unsubscribe).subscribe(res => {
       alert('Xóa thành công');
       this.search(); 
@@ -132,8 +129,7 @@ export class LophocComponent extends BaseComponent implements OnInit {
     setTimeout(() => {
       $('#createUserModal').modal('toggle');
       this._api.get('/api/lophoc/get-by-id/'+ row.maLopHoc).takeUntil(this.unsubscribe).subscribe((res:any) => {
-        this.lophoc = res; 
-        console.log(this.lophoc);
+        this.lophoc = res;
           this.formdata = this.fb.group({
             'tenlop': [this.lophoc.tenlophoc, Validators.required],
             'khoihoc': [this.lophoc.khoiHoc, Validators.required],

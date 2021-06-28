@@ -30,7 +30,6 @@ export class DsdiemdanhComponent extends BaseComponent implements OnInit {
   ngOnInit(): void {
     this._api.get('/api/GopY/get-all').takeUntil(this.unsubscribe).subscribe(res => {
       this.infos = res;
-      console.log(this.infos);
       });
   }
 }

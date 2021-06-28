@@ -10,22 +10,22 @@ import { AuthenticationService } from '../../lib/authentication.service';
 declare var $: any;
 
 @Component({
-  selector: 'app-dsdiemdanhngay',
-  templateUrl: './dsdiemdanhngay.component.html',
-  styleUrls: ['./dsdiemdanhngay.component.css']
+  selector: 'app-sinhnhat',
+  templateUrl: './sinhnhat.component.html',
+  styleUrls: ['./sinhnhat.component.css']
 })
-export class DsdiemdanhngayComponent extends BaseComponent implements OnInit {
+export class SinhnhatComponent extends BaseComponent implements OnInit {
   public hocsinhs: any;
-  public lophocs: any;
-  public lophoc: any;
-  public Tenlophoc: string;
+  public hocsinhs2: any;
   public formds: any;
   public formdata: any;
   public isCreate: any;
   public check: any;
-  public date: any;
+  public month: any;
   public MaLop: any;
+  public crrmonth: any;
   public countHS: number;
+  public countHS2: number;
   @ViewChild(FileUpload, { static: false }) file_image: FileUpload;
   constructor(private fb: FormBuilder, injector: Injector, private datePipe: DatePipe, private authenticationService: AuthenticationService) {
     super(injector);
@@ -33,17 +33,20 @@ export class DsdiemdanhngayComponent extends BaseComponent implements OnInit {
 
   ngOnInit(): void {
     this.formds = this.fb.group({
-      'MaLop': [''],
-      'date': [''],
+      'month': [''],
     });
+    var today = new Date();
+    this.crrmonth = today.getMonth() + 1;
+    console.log(this.crrmonth);
+    
     this.check = true;
     this.isCreate = false;
-    this._api.get('/api/lophoc/get-all').takeUntil(this.unsubscribe).subscribe(res => {
-      this.lophocs = res;
-      this.formds.get('MaLop').setValue(this.lophocs[0].maLopHoc);
+    this._api.get('/api/HocSinh/get-by-monthnow').takeUntil(this.unsubscribe).subscribe(res => {
+      this.hocsinhs = res;
+      this.countHS = this.hocsinhs.length;
     });
-
   }
+
   get f() { return this.formdata.controls; }
 
   onSubmit(form: any): void {
@@ -52,15 +55,11 @@ export class DsdiemdanhngayComponent extends BaseComponent implements OnInit {
   LayDS() {
     this.check = false;
     this.isCreate = true;
-    this.date = this.formds.get('date').value;
-    this.MaLop = this.formds.get('MaLop').value;
-    this._api.get('/api/lophoc/get-by-id/'+ this.MaLop).takeUntil(this.unsubscribe).subscribe((res:any) => {
-      this.lophoc = res;
-      this.Tenlophoc = this.lophoc.tenlophoc;
-    }); 
-    this._api.get('/api/DiemDanh/get-diem-danh-by-date/' + this.date + '/' + this.MaLop + '/' + 1).takeUntil(this.unsubscribe).subscribe(res => {
-      this.hocsinhs = res;
-      this.countHS = this.hocsinhs.length;
+    var mon = this.formds.get('month').value;
+    this.month = mon.split("-", 2);
+    this._api.get('/api/HocSinh/get-by-month/'+ this.month[1]).takeUntil(this.unsubscribe).subscribe((res:any) => {
+      this.hocsinhs2 = res;
+      this.countHS2 = this.hocsinhs2.length;
     });
   }
 }

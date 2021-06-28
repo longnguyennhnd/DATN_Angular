@@ -59,10 +59,10 @@ export class DiemtbComponent extends BaseComponent implements OnInit {
         animationEnabled: true,
         exportEnabled: true,
         title: {
-          text: "Biểu đồ điểm trung bình môn theo lớp"
+          text: "Biểu đồ tỉ lệ nam nữ"
         },
         axisY: {
-          title: "Thang điểm"
+          title: "Số(trẻ)"
         },
         data: [{
           type: "column",
