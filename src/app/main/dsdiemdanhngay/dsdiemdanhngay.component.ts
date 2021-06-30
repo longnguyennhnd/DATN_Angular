@@ -16,6 +16,8 @@ declare var $: any;
 })
 export class DsdiemdanhngayComponent extends BaseComponent implements OnInit {
   public hocsinhs: any;
+  public lsths: any;
+  public counthss : any;
   public lophocs: any;
   public lophoc: any;
   public Tenlophoc: string;
@@ -42,7 +44,11 @@ export class DsdiemdanhngayComponent extends BaseComponent implements OnInit {
       this.lophocs = res;
       this.formds.get('MaLop').setValue(this.lophocs[0].maLopHoc);
     });
-
+    this._api.get('/api/DiemDanh/get-all').takeUntil(this.unsubscribe).subscribe(res => {
+      this.lsths = res;
+      console.log(this.lsths);
+      this.counthss = this.lsths.length;
+    });
   }
   get f() { return this.formdata.controls; }
 

@@ -31,6 +31,10 @@ import { DsdiemdanhComponent } from './dsdiemdanh/dsdiemdanh.component';
 import { ThongbaoComponent } from './thongbao/thongbao.component';
 import { DsdiemdanhngayComponent } from './dsdiemdanhngay/dsdiemdanhngay.component';
 import { SinhnhatComponent } from './sinhnhat/sinhnhat.component';
+import { ProfileComponent } from './profile/profile.component';
+import { PhuhuynhchatComponent } from './phuhuynhchat/phuhuynhchat.component';
+import { FormsModule } from '@angular/forms';
+import { AdminchatsComponent } from './adminchats/adminchats.component';
 
 
 
@@ -78,6 +82,12 @@ export const mainRoutes: Routes = [
           data: { roles: [Role.Admin] }
         },
         {
+          path: 'adminchats',
+          component: AdminchatsComponent,
+          canActivate: [RoleGuard],
+          data: { roles: [Role.Admin] }
+        },
+        {
           path: 'dsdiemdanh',
           component: DsdiemdanhComponent,
           canActivate: [RoleGuard],
@@ -86,6 +96,12 @@ export const mainRoutes: Routes = [
         {
           path: 'tintuc',
           component: TintucComponent,
+          canActivate: [RoleGuard],
+          data: { roles: [Role.Admin] },
+        },
+        {
+          path: 'profile',
+          component: ProfileComponent,
           canActivate: [RoleGuard],
           data: { roles: [Role.Admin] },
         },
@@ -122,6 +138,12 @@ export const mainRoutes: Routes = [
         {
           path: 'xemdiem',
           component: XemdiemComponent,
+          canActivate: [RoleGuard],
+          data: { roles: [Role.Student] },
+        },
+        {
+          path: 'phchats',
+          component: PhuhuynhchatComponent,
           canActivate: [RoleGuard],
           data: { roles: [Role.Student] },
         },
@@ -188,11 +210,15 @@ export const mainRoutes: Routes = [
     NghiphepComponent,
     ThongbaoComponent,
     DsdiemdanhngayComponent,
-    SinhnhatComponent
+    ProfileComponent,
+    SinhnhatComponent,
+    PhuhuynhchatComponent,
+    AdminchatsComponent
   ],
   imports: [
     SharedModule,
     InputTextModule,
+    FormsModule,
     CommonModule,
     RouterModule.forChild(mainRoutes)
   ],  

@@ -14,7 +14,7 @@
          </div>
 
          <div class="dropdown-menu">
-            <a class="dropdown-item" href="">Hồ sơ</a>
+            <a class="dropdown-item" [routerLink]="['/profile']">Hồ sơ</a>
             <a class="dropdown-item" href="">Cài đặt</a>
             <a class="dropdown-item" (click)="logout()">Đăng xuất</a>
          </div>
@@ -79,7 +79,10 @@
             <li>
             <li><a [routerLink]="['/dsdiemdanh']"><i class="zmdi zmdi-thumb-up-down zmdi-hc-fw"></i>
                   Xem các góp ý</a></li>
-            <li>
+            <!-- <li>
+               <li><a [routerLink]="['/adminchats']"><i class="zmdi zmdi-thumb-up-down zmdi-hc-fw"></i>
+                  Chat với phụ huynh</a></li>
+            <li> -->
 
             <li><a [routerLink]="['/thongke/diemtbkyhoc']"><i class="zmdi zmdi-apps"></i>
                   Thống kê tỉ lệ học sinh</a></li>
@@ -115,6 +118,9 @@
             <li>
             <li><a [routerLink]="['/xemdiemhk']"><i class="zmdi zmdi-spellcheck zmdi-hc-fw"></i>
                   Góp Ý</a></li>
+            <li>
+               <li><a [routerLink]="['/phchats']"><i class="zmdi zmdi-comment-alt-text"></i>
+                  Chat với nhà trường</a></li>
             <li>
                <!-- <li><a [routerLink]="['/xemlichhoc']"><i class="zmdi zmdi-home"></i>
                   Xem Lịch Học</a></li>

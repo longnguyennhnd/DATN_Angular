@@ -20,7 +20,7 @@
                     <th scope="col">STT</th>
                     <th scope="col">Họ tên</th>
                     <th scope="col">Tên tài khoản</th>
-                    <th scope="col">Mật khẩu</th>
+                    <!-- <th scope="col">Mật khẩu</th> -->
                     <th scope="col">Quyền</th>
                     <th scope="col">Tác vụ</th>
                 </tr>
@@ -31,7 +31,7 @@
                   <td style="text-align: center;">{{i+1}}</td>
                   <td>{{ item.hoTen }}</td>
                   <td>{{ item.username }}</td>
-                  <td>{{ item.password }}</td>
+                  <!-- <td>{{ item.password }}</td> -->
                   <td style="text-align: center;">
                     <p *ngIf="item.level == 'User' ">Giáo Viên</p>
                     <p *ngIf="item.level == 'Admin' ">Người quản trị</p>
