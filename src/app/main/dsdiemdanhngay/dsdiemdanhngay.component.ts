@@ -55,7 +55,7 @@ export class DsdiemdanhngayComponent extends BaseComponent implements OnInit {
   onSubmit(form: any): void {
   }
 
-  LayDS() {
+  LayDS() { 
     this.check = false;
     this.isCreate = true;
     this.date = this.formds.get('date').value;
